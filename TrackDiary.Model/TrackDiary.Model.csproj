@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Membership\" />
+    <Folder Include="DataAcquisition\" />
+    <Folder Include="InputDevices\" />
+    <Folder Include="Location\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrackDiary.Model.Common\TrackDiary.Model.Common.csproj" />
+    <ProjectReference Include="..\TrackDiary.Infrastructure.Common\TrackDiary.Infrastructure.Common.csproj" />
+  </ItemGroup>
+</Project>
