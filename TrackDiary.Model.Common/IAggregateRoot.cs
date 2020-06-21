@@ -2,5 +2,6 @@
 {
     public interface IAggregateRoot<TEntityId> : IEntity<TEntityId>
     {
+
     }
 }
