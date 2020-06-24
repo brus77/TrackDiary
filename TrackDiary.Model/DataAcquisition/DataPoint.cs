@@ -4,5 +4,6 @@ namespace TrackDiary.Model.DataAcquisition
 {
     public class DataPoint : IValueType
     {
+
     }
 }
