@@ -1,10 +1,9 @@
-﻿using System;
+﻿using TrackDiary.Model.Common;
+
 namespace TrackDiary.Model.InputDevices
 {
-    public class InputSource
+    public class InputSource : IAggregateRoot<IntIdentityType>
     {
-        public InputSource()
-        {
-        }
+        public IntIdentityType Id { get; set; }
     }
 }

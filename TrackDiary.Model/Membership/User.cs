@@ -1,10 +1,9 @@
-﻿using System;
+﻿using TrackDiary.Model.Common;
+
 namespace TrackDiary.Model.Membership
 {
-    public class User
+    public class User : IAggregateRoot<StringIdentityType>
     {
-        public User()
-        {
-        }
+        public StringIdentityType Id { get; set; }
     }
 }

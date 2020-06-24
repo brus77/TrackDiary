@@ -1,10 +1,9 @@
-﻿using System;
+﻿using TrackDiary.Model.Common;
+
 namespace TrackDiary.Model.Location
 {
-    public class Track
+    public class Track : IAggregateRoot<StringIdentityType>
     {
-        public Track()
-        {
-        }
+        public StringIdentityType Id { get; set; }
     }
 }

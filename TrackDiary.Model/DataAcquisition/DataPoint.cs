@@ -1,10 +1,8 @@
-﻿using System;
+﻿using TrackDiary.Model.Common;
+
 namespace TrackDiary.Model.DataAcquisition
 {
-    public class DataPoint
+    public class DataPoint : IValueType
     {
-        public DataPoint()
-        {
-        }
     }
 }

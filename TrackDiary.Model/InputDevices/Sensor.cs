@@ -1,10 +1,9 @@
-﻿using System;
+﻿using TrackDiary.Model.Common;
+
 namespace TrackDiary.Model.InputDevices
 {
-    public class Sensor
+    public class Sensor : IAggregateRoot<IntIdentityType>
     {
-        public Sensor()
-        {
-        }
+        public IntIdentityType Id { get; set; }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
+﻿using TrackDiary.Model.Common;
+
 namespace TrackDiary.Model.DataAcquisition
 {
-    public class Event
+    public class Event : IAggregateRoot<IntIdentityType>
     {
-        public Event()
-        {
-        }
+        public IntIdentityType Id { get; set; }
     }
 }
