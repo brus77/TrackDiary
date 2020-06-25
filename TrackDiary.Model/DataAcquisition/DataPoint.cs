@@ -1,9 +1,11 @@
-﻿using TrackDiary.Model.Common;
+﻿using System;
+using TrackDiary.Model.Common;
 
 namespace TrackDiary.Model.DataAcquisition
 {
-    public class DataPoint : IValueType
+    public class DataPoint<TDataType> : IValueObject where TDataType : struct
     {
-
+        public DateTimeOffset Time { get; set; }
+        public TDataType? Value { get; set; }
     }
 }

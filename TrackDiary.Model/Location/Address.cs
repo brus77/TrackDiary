@@ -2,7 +2,7 @@
 
 namespace TrackDiary.Model.Location
 {
-    public class Address : IValueType
+    public class Address : IValueObject
     {
         public Address(string state, string city, string streetAddress)
         {

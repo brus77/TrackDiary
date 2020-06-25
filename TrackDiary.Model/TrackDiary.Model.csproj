@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Membership\" />
-    <Folder Include="DataAcquisition\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrackDiary.Model.Common\TrackDiary.Model.Common.csproj" />
