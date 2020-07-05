@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using TrackDiary.Model.Common;
-using TrackDiary.Model.InputDevices;
 
 namespace TrackDiary.Model.DataAcquisition
 {
@@ -13,6 +12,5 @@ namespace TrackDiary.Model.DataAcquisition
         public DateTimeOffset? EndTime { get; set; }
 
         public IEnumerable<InputSource> Sources { get; set; }
-        public IEnumerable<DataPoint<T>> DataPoints { get; set; }
     }
 }

@@ -1,0 +1,1 @@
+﻿dotnet run -p TrackDiary.UI.Web/ --no-restore

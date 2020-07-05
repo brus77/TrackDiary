@@ -1,6 +1,8 @@
-﻿using TrackDiary.Model.Common;
+﻿using System.Collections.Generic;
+using TrackDiary.Model.Common;
+using TrackDiary.Model.InputDevices;
 
-namespace TrackDiary.Model.InputDevices
+namespace TrackDiary.Model.DataAcquisition
 {
     public class InputSource : IAggregateRoot<IntIdentityType>
     {
@@ -8,5 +10,6 @@ namespace TrackDiary.Model.InputDevices
 
         public string Name { get; set; }
         public Sensor Sensor { get; set; }
+        public IEnumerable<IDataPoint> Data { get; set; }
     }
 }
