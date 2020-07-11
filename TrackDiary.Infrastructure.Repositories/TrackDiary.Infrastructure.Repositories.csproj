@@ -10,4 +10,10 @@
   <ItemGroup>
     <ProjectReference Include="..\TrackDiary.Model\TrackDiary.Model.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataAcquisition\" />
+    <Folder Include="InputDevices\" />
+    <Folder Include="Location\" />
+    <Folder Include="Membership\" />
+  </ItemGroup>
 </Project>
