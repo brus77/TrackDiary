@@ -8,7 +8,6 @@ namespace TrackDiary.Model.DataAcquisition
     {
         public IntIdentityType Id { get; set; }
 
-        public Event Event { get; set; }
         public DateTimeOffset StartTime { get; set; }
         public DateTimeOffset? EndTime { get; set; }
         public IEnumerable<InputDataSet> DataSets { get; set; }

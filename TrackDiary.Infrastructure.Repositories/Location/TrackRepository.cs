@@ -8,6 +8,11 @@ namespace TrackDiary.Infrastructure.Repositories.Location
     {
         public Track this[StringIdentityType id] { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+        public Track CreateNew()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Track> GetAll()
         {
             throw new System.NotImplementedException();

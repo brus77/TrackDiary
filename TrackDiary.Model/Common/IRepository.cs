@@ -7,5 +7,6 @@ namespace TrackDiary.Model.Common
     {
         IEnumerable<TAggregateRoot> GetAll();
         TAggregateRoot this[TEntityId id] { get; set; }
+        TAggregateRoot CreateNew();
     }
 }

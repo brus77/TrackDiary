@@ -8,6 +8,11 @@ namespace TrackDiary.Infrastructure.Repositories.InputDevices
     {
         public Sensor this[IntIdentityType id] { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+        public Sensor CreateNew()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Sensor> GetAll()
         {
             throw new System.NotImplementedException();
