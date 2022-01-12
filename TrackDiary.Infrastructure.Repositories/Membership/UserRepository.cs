@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 using System.Collections.Generic;
 using TrackDiary.Infrastructure.Repositories.Common;
 using TrackDiary.Model.Common;
@@ -8,28 +9,34 @@ namespace TrackDiary.Infrastructure.Repositories.Membership
 {
     public class UserRepository : IUserRepository
     {
-        public User this[StringIdentityType id] { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        private LiteDatabase ldb = LiteDBContext.NewInstance();
+
+        public User this[StringIdentityType id] {
+            get {
+                var col = ldb.GetCollection<User>("users");
+                return col.Query().Where(x => x.Id == id).Single();
+            }
+
+            set {
+                var col = ldb.GetCollection<User>("users");
+                col.Insert(value);
+            }
+        }
 
         public User CreateNew()
         {
-            using (var ldb = LiteDBContext.Instance)
-            {
-                var newItem = new User();
-                newItem.Id = new StringIdentityType();
-                newItem.Id.IdValue = Guid.NewGuid().ToString();
-                var col = ldb.GetCollection<User>("users");
-                col.Insert(newItem);
-                return newItem;
-            }
+            var newItem = new User();
+            newItem.Id = new StringIdentityType();
+            newItem.Id.IdValue = Guid.NewGuid().ToString();
+            var col = ldb.GetCollection<User>("users");
+            col.Insert(newItem);
+            return newItem;
         }
 
         public IEnumerable<User> GetAll()
         {
-            using (var ldb = LiteDBContext.Instance)
-            {
-                var col = ldb.GetCollection<User>("users");
-                return col.Query().ToEnumerable();
-            }
+            var col = ldb.GetCollection<User>("users");
+            return col.Query().ToEnumerable();
         }
     }
 }
