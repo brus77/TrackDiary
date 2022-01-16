@@ -6,7 +6,7 @@ using TrackDiary.Model.Membership;
 
 namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
 {
-    public class Tests
+    public class UserRepositoryTests
     {
         private MockRepository _mocks;
 

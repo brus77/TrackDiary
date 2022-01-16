@@ -55,6 +55,8 @@ namespace TrackDiary.Model.Common
 
         public static bool operator !=(StringIdentityType lhs, StringIdentityType rhs) => !(lhs == rhs);
 
+        public static implicit operator StringIdentityType(string idValue) => new StringIdentityType(idValue);
+
         public override int GetHashCode()
         {
             return IdValue.GetHashCode();

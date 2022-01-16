@@ -15,7 +15,7 @@
 
             if (object.ReferenceEquals(this, obj)) return true;
 
-            if (!(obj is IEntityIdentityType<int>))
+            if (!(obj is IntIdentityType))
             {
                 if (obj is int)
                 {
@@ -26,9 +26,29 @@
                 }
             } else
             {
-                return IdValue == ((IEntityIdentityType<int>)obj).IdValue;
+                return IdValue == ((IntIdentityType)obj).IdValue;
             }
         }
+
+        public static bool operator ==(IntIdentityType lhs, IntIdentityType rhs)
+        {
+            if (lhs is null)
+            {
+                if (rhs is null)
+                {
+                    return true;
+                }
+
+                // Only the left side is null.
+                return false;
+            }
+            // Equals handles case of null on right side.
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(IntIdentityType lhs, IntIdentityType rhs) => !(lhs == rhs);
+
+        public static implicit operator IntIdentityType(int idValue) => new IntIdentityType(idValue);
 
         public override int GetHashCode()
         {
