@@ -9,7 +9,7 @@ namespace TrackDiary.Infrastructure.Repositories.Membership
 {
     public class UserRepository : IUserRepository
     {
-        private LiteDatabase ldb = LiteDBContext.NewInstance();
+        private LiteDatabase ldb = LiteDBContext.Instance();
 
         public User this[StringIdentityType id] {
             get {
@@ -26,8 +26,7 @@ namespace TrackDiary.Infrastructure.Repositories.Membership
         public User CreateNew()
         {
             var newItem = new User();
-            newItem.Id = new StringIdentityType();
-            newItem.Id.IdValue = Guid.NewGuid().ToString();
+            newItem.Id = new StringIdentityType(Guid.NewGuid().ToString());
             var col = ldb.GetCollection<User>("users");
             col.Insert(newItem);
             return newItem;

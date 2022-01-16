@@ -4,12 +4,12 @@ using System.Linq;
 using TrackDiary.Infrastructure.Repositories.Membership;
 using TrackDiary.Model.Membership;
 
-namespace TrackDiary.Test
+namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
 {
     public class Tests
     {
         private MockRepository _mocks;
-        
+
 
         [SetUp]
         public void Setup()
