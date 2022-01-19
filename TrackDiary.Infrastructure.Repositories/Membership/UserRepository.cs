@@ -3,7 +3,7 @@ using TrackDiary.Model.Membership;
 
 namespace TrackDiary.Infrastructure.Repositories.Common
 {
-    public class UserRepository : BaseRepository<User, StringIdentityType>
+    public class UserRepository : BaseRepository<User, StringIdentityType>, IUserRepository
     {
     }
 }
