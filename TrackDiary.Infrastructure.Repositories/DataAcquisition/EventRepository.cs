@@ -1,21 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using TrackDiary.Infrastructure.Repositories.Common;
 using TrackDiary.Model.Common;
 using TrackDiary.Model.DataAcquisition;
 
 namespace TrackDiary.Infrastructure.Repositories.DataAcquisition
 {
-    public class EventRepository : IEventRepository
+    public class EventRepository : BaseRepository<Event, StringIdentityType>, IEventRepository
     {
-        public Event this[IntIdentityType id] { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-        public Event CreateNew()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<Event> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

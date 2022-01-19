@@ -1,9 +1,8 @@
-﻿using System;
-using TrackDiary.Model.Common;
+﻿using TrackDiary.Model.Common;
 
 namespace TrackDiary.Model.DataAcquisition
 {
-    public interface IEventRepository : IRepository<Event, IntIdentityType>
+    public interface IEventRepository : IRepository<Event, StringIdentityType>
     {
     }
 }

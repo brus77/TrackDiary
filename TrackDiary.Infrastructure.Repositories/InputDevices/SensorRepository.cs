@@ -1,21 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using TrackDiary.Infrastructure.Repositories.Common;
 using TrackDiary.Model.Common;
 using TrackDiary.Model.InputDevices;
 
 namespace TrackDiary.Infrastructure.Repositories.InputDevices
 {
-    public class SensorRepository : ISensorRepository
+    public class SensorRepository : BaseRepository<Sensor, StringIdentityType>, ISensorRepository
     {
-        public Sensor this[IntIdentityType id] { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-        public Sensor CreateNew()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<Sensor> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

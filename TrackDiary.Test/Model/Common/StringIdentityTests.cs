@@ -52,6 +52,20 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             // compare with == operator
             Assert.IsTrue(id1_1 == "1");
             Assert.IsFalse(id1_1 == "2");
+
+            Assert.IsTrue("1" == id1_1);
+            Assert.IsFalse("2" == id1_1);
+        }
+
+        [Test]
+        public void HashCodeGeneration()
+        {
+            StringIdentityType id1_1 = new StringIdentityType("1");
+            StringIdentityType id1_2 = new StringIdentityType("1");
+            StringIdentityType id2 = new StringIdentityType("2");
+
+            Assert.IsTrue(id1_1.GetHashCode() == id1_2.GetHashCode());
+            Assert.IsFalse(id1_1.GetHashCode() == id2.GetHashCode());
         }
     }
 }

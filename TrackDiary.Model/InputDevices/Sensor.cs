@@ -2,10 +2,15 @@
 
 namespace TrackDiary.Model.InputDevices
 {
-    public abstract class Sensor : IAggregateRoot<IntIdentityType>
+    public class Sensor : IAggregateRoot<StringIdentityType>
     {
-        public IntIdentityType Id { get; set; }
+        public Sensor()
+        {
 
-        public abstract string Name { get; set; }
+        }
+
+        public StringIdentityType Id { get; set; }
+
+        public string Name { get; set; }
     }
 }

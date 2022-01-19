@@ -4,6 +4,11 @@ namespace TrackDiary.Model.Common
 {
     public class StringIdentityType : IEntityIdentityType<string>
     {
+        public StringIdentityType()
+        {
+            this.IdValue = Guid.NewGuid().ToString();
+        }
+
         public StringIdentityType(string idValue)
         {
             if (string.IsNullOrEmpty(idValue))
@@ -46,10 +51,8 @@ namespace TrackDiary.Model.Common
                     return true;
                 }
 
-                // Only the left side is null.
                 return false;
             }
-            // Equals handles case of null on right side.
             return lhs.Equals(rhs);
         }
 

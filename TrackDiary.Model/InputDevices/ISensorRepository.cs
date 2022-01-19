@@ -2,7 +2,7 @@
 
 namespace TrackDiary.Model.InputDevices
 {
-    public interface ISensorRepository : IRepository<Sensor, IntIdentityType>
+    public interface ISensorRepository : IRepository<Sensor, StringIdentityType>
     {
     }
 }

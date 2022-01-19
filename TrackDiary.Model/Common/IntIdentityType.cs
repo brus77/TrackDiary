@@ -39,10 +39,8 @@
                     return true;
                 }
 
-                // Only the left side is null.
                 return false;
             }
-            // Equals handles case of null on right side.
             return lhs.Equals(rhs);
         }
 

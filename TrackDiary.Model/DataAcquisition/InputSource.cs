@@ -4,9 +4,14 @@ using TrackDiary.Model.InputDevices;
 
 namespace TrackDiary.Model.DataAcquisition
 {
-    public class InputSource : IAggregateRoot<IntIdentityType>
+    public class InputSource : IAggregateRoot<StringIdentityType>
     {
-        public IntIdentityType Id { get; set; }
+        public InputSource()
+        {
+
+        }
+
+        public StringIdentityType Id { get; set; }
 
         public string Name { get; set; }
         public Sensor Sensor { get; set; }

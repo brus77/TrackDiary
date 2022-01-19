@@ -4,9 +4,14 @@ using TrackDiary.Model.Common;
 
 namespace TrackDiary.Model.DataAcquisition
 {
-    public class Event : IAggregateRoot<IntIdentityType>
+    public class Event : IAggregateRoot<StringIdentityType>
     {
-        public IntIdentityType Id { get; set; }
+        public Event()
+        {
+
+        }
+
+        public StringIdentityType Id { get; set; }
 
         public string Name { get; set; }
         public DateTimeOffset FirstDayOfEvent { get; set; }
