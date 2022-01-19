@@ -1,7 +1,6 @@
 ﻿using LiteDB;
 using System;
 using System.Collections.Generic;
-using TrackDiary.Infrastructure.Repositories.Common;
 using TrackDiary.Model.Common;
 
 namespace TrackDiary.Infrastructure.Repositories.Common
