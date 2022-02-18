@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrackDiary.Infrastructure.Repositories\TrackDiary.Infrastructure.Repositories.csproj" />
+    <ProjectReference Include="..\TrackDiary.Infrastructure\TrackDiary.Infrastructure.csproj" />
     <ProjectReference Include="..\TrackDiary.Model\TrackDiary.Model.csproj" />
   </ItemGroup>
 </Project>

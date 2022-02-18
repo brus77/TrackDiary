@@ -16,5 +16,6 @@ namespace TrackDiary.Model.DataAcquisition
         public string Name { get; set; }
         public DateTimeOffset FirstDayOfEvent { get; set; }
         public IEnumerable<Session> Sessions { get; set; }
+        public IEnumerable<StringIdentityType> OwnersUserIds { get; set; }
     }
 }
