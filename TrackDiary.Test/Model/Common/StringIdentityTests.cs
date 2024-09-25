@@ -18,8 +18,8 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             StringIdentityType id1_2 = new StringIdentityType("1");
             StringIdentityType id2 = new StringIdentityType("2");
 
-            Assert.IsTrue(id1_1.Equals(id1_2));
-            Assert.IsFalse(id1_1.Equals(id2));
+            Assert.That(id1_1.Equals(id1_2));
+            Assert.That(!id1_1.Equals(id2));
         }
 
         [Test]
@@ -28,8 +28,8 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             StringIdentityType id1_1 = new StringIdentityType("1");
 
             // compare to strings
-            Assert.IsTrue(id1_1.Equals("1"));
-            Assert.IsFalse(id1_1.Equals("2"));
+            Assert.That(id1_1.Equals("1"));
+            Assert.That(!id1_1.Equals("2"));
         }
 
         [Test]
@@ -40,8 +40,8 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             StringIdentityType id2 = new StringIdentityType("2");
 
             // compare with == operator
-            Assert.IsTrue(id1_1 == id1_2);
-            Assert.IsFalse(id1_1 == id2);
+            Assert.That(id1_1 == id1_2);
+            Assert.That(id1_1 != id2);
         }
 
         [Test]
@@ -50,11 +50,11 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             StringIdentityType id1_1 = new StringIdentityType("1");
 
             // compare with == operator
-            Assert.IsTrue(id1_1 == "1");
-            Assert.IsFalse(id1_1 == "2");
+            Assert.That(id1_1 == "1");
+            Assert.That(id1_1 != "2");
 
-            Assert.IsTrue("1" == id1_1);
-            Assert.IsFalse("2" == id1_1);
+            Assert.That("1" == id1_1);
+            Assert.That("2" != id1_1);
         }
 
         [Test]
@@ -64,8 +64,8 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             StringIdentityType id1_2 = new StringIdentityType("1");
             StringIdentityType id2 = new StringIdentityType("2");
 
-            Assert.IsTrue(id1_1.GetHashCode() == id1_2.GetHashCode());
-            Assert.IsFalse(id1_1.GetHashCode() == id2.GetHashCode());
+            Assert.That(id1_1.GetHashCode() == id1_2.GetHashCode());
+            Assert.That(id1_1.GetHashCode() != id2.GetHashCode());
         }
     }
 }

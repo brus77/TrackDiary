@@ -17,7 +17,7 @@ namespace TrackDiary.Test.Infrastructure.Factories
         public void GetSensorRepositoryInstance()
         {
             var repo = RepositoriesFactory.GetRepository<ISensorRepository, Sensor, StringIdentityType>();
-            Assert.IsTrue(repo is SensorRepository);
+            Assert.That(repo is SensorRepository);
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace TrackDiary.Test.Infrastructure.Factories
         {
             var repo1 = RepositoriesFactory.GetRepository<ISensorRepository, Sensor, StringIdentityType>();
             var repo2= RepositoriesFactory.GetRepository<ISensorRepository, Sensor, StringIdentityType>();
-            Assert.IsTrue(object.ReferenceEquals(repo1, repo2));
+            Assert.That(object.ReferenceEquals(repo1, repo2));
         }
     }
 }

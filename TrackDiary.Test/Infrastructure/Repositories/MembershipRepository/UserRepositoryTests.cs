@@ -18,7 +18,7 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             var newItem = repo.CreateNew();
             var newItemId = newItem.Id;
             var all = repo.GetAll();
-            Assert.IsNotNull(all.SingleOrDefault(x => x.Id == newItemId));
+            Assert.That(all.SingleOrDefault(x => x.Id == newItemId) != null);
             repo.Delete(newItemId);
         }
 
@@ -29,7 +29,7 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             var newItem = repo.CreateNew();
             var newItemId = newItem.Id;
             var usr = repo[newItemId];
-            Assert.NotNull(usr);
+            Assert.That(usr != null);
             repo.Delete(usr.Id);
         }
 
@@ -40,10 +40,10 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             var newItem = repo.CreateNew();
             var newItemId = newItem.Id;
             var usr = repo[newItemId];
-            Assert.IsNotNull(usr);
+            Assert.That(usr != null);
             repo.Delete(usr.Id);
             usr = repo[newItemId];
-            Assert.IsNull(usr);
+            Assert.That(usr == null);
         }
 
         [Test]
@@ -56,14 +56,14 @@ namespace TrackDiary.Test.Infrastructure.Repositories.MembershipRepository
             usr.UserName = "test1";
             repo[newItemId] = usr;
             var usrModified = repo[newItemId];
-            Assert.AreEqual(usrModified.UserName, "test1");
+            Assert.That("test1".Equals(usrModified.UserName));
 
             usrModified.UserName = "test2";
             repo[newItemId] = usrModified;
             var usrModified2 = repo[newItemId];
-            Assert.AreEqual(usrModified2.UserName, "test2");
+            Assert.That("test2".Equals(usrModified2.UserName));
             var deleted = repo.Delete(newItemId);
-            Assert.IsTrue(deleted);
+            Assert.That(deleted);
         }
     }
 }
