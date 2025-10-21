@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using TrackDiary.Model.Common;
 
@@ -7,41 +7,24 @@ namespace TrackDiary.Infrastructure.Factories
 {
     public static class RepositoriesFactory
     {
-        private static IDictionary<Type, object> objCache;
+        private static readonly ConcurrentDictionary<Type, object> objCache = new ConcurrentDictionary<Type, object>();
 
-        static RepositoriesFactory()
+        public static TRepository GetRepository<TRepository, TAggregateRoot, TEntityId>()
+            where TAggregateRoot : IAggregateRoot<TEntityId>
+            where TEntityId : IEntityIdentityType
+            where TRepository : IRepository<TAggregateRoot, TEntityId>
         {
-            objCache = new Dictionary<Type, object>();
-        }
-        
-        public static TRepository GetRepository<TRepository, TAggregateRoot, TEntityId>() where TAggregateRoot : IAggregateRoot<TEntityId>
-                                                            where TEntityId : IEntityIdentityType where TRepository : IRepository<TAggregateRoot, TEntityId>
-        {
-            if (objCache.ContainsKey(typeof(TRepository)))
-            {
-                return (TRepository) objCache[typeof(TRepository)];
-            } else
-            {
-                lock(objCache)
-                {
-                    if (objCache.ContainsKey(typeof(TRepository)))
-                    {
-                        return (TRepository) objCache[typeof(TRepository)];
-                    } else
-                    {
-                        var newRepo = InstantiateRepository<TRepository, TAggregateRoot, TEntityId>();
-                        objCache.Add(typeof(TRepository), newRepo);
-                        return newRepo;
-                    }
-                }
-            }
+            return (TRepository)objCache.GetOrAdd(typeof(TRepository), _ => InstantiateRepository<TRepository, TAggregateRoot, TEntityId>());
         }
 
-        private static TRepository InstantiateRepository<TRepository, TAggregateRoot, TEntityId>() where TAggregateRoot : IAggregateRoot<TEntityId>
-                                                            where TEntityId : IEntityIdentityType where TRepository : IRepository<TAggregateRoot, TEntityId>
+        private static TRepository InstantiateRepository<TRepository, TAggregateRoot, TEntityId>()
+            where TAggregateRoot : IAggregateRoot<TEntityId>
+            where TEntityId : IEntityIdentityType
+            where TRepository : IRepository<TAggregateRoot, TEntityId>
         {
-            var repoConcreteTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Contains(typeof(TRepository)) && t.GetConstructor(Type.EmptyTypes) != null));
-            if (repoConcreteTypes.Count() == 0)
+            var repoConcreteTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Contains(typeof(TRepository)) && t.GetConstructor(Type.EmptyTypes) != null));
+            if (!repoConcreteTypes.Any())
             {
                 throw new Exception($"No implementations for type {typeof(TRepository).Name}");
             }
@@ -49,8 +32,7 @@ namespace TrackDiary.Infrastructure.Factories
             {
                 throw new Exception($"Multiple implementations for type {typeof(TRepository).Name}");
             }
-
-            return (TRepository) Activator.CreateInstance(repoConcreteTypes.Single());
+            return (TRepository)Activator.CreateInstance(repoConcreteTypes.Single());
         }
     }
 }
